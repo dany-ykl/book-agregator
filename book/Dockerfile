@@ -12,3 +12,5 @@ RUN pip install -r requirements.txt
 
 COPY . /code/
 
+CMD ["python3", "manage.py", "migrate"]
+
