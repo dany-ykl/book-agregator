@@ -1,0 +1,52 @@
+{% extends 'agregator/index.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/favorite.css' %}">
+{% endblock %}
+{% block content %}
+<div class="cart">
+    {% for book in basket_list %}
+    <div class='cart_book'>
+        <div class='buttons'>
+        <button id="{{book.id}}" class="cart_fav" ><image class="img_cart_fav" id="i{{book.id}}" src="{% static 'image/black_like.png' %}"></button>
+            {% block javascript %}
+                  <script>
+                  $("#{{book.id}}").on('click', function(event) {
+                      $.ajax({
+                          url: '{% url "favorite:book-list" %}',
+                          type: 'post',
+                          data: {'article': '{{book.article}}'},
+                          contentType: "application/x-www-form-urlencoded;charset=UTF-8",
+                          headers: { "X-CSRFToken": "{{ csrf_token }}" },
+                          dataType: 'json',
+                          success: function (data) {
+                              if (data.success==true) {
+                                  location.reload()
+                              };
+                          }
+                        
+                      });
+                    });
+                  </script>
+                  {% endblock %}
+        <div class="button_buy">
+        <a href="{{book.link}}" target="blank"><image class='img_cart_buy' src="{% static 'image/basket.png' %}"></a>
+        </div>
+        </div>
+        <div>
+        <a href="{{book.link}}" target="blank"><img class='cart_image' src='{{book.img}}'></a>
+        </div>
+        <div class='cart_name_book'>
+        <a href="{{book.link}}" target="blank">{{book.book}}</a>
+        </div>
+        <div class='cart_author'>
+        <span>{{book.author}}</span>
+        </div>
+        <div class='cart_price'>
+            <span>{{book.price}} ₽</span>
+        </div>
+    </div>
+    <hr align="center" width="100%" size="1.5" color="#dddddd" />
+    {% endfor %}
+</div>
+{% endblock %}

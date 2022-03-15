@@ -1,0 +1,153 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: AlergiaNormal,"Segoe UI","San Francisco",sans-serif;
+}
+
+.menu_wrapper {
+    margin: 3% 10%;
+}
+
+nav {
+    display: inline-block;
+    word-spacing: 14px;
+}
+nav a {
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 400;
+    
+}
+
+nav a:hover {
+    border-bottom: 1px solid black;
+}
+
+.form_wrapper {
+    position: absolute;
+    top: 170px;
+    left: 24%;
+    width: 60%;
+}
+
+form input[type='text'] {
+    border-radius: 4px;
+    width: 84%;
+    height: 34px;
+    font-size: 17px;
+    padding-left: 6px;
+    
+}
+
+
+form input[type="image"] {
+    position: absolute;
+    width: 26px;
+    margin-left: -34px;
+    margin-top: 6px;
+}
+
+
+.catalog_books {
+    position: absolute;
+    top: 300px;
+    left:  12%;
+    right: 10%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 5%;
+    row-gap: 50px;
+    column-gap: 20px;
+}
+
+.card_book {
+    width: 160px;
+    height: 360px;
+    position: relative;
+}
+
+.card_image {
+    width: 140px;
+    height: 195px;
+    padding-left: 5px;
+}
+
+.name {
+    padding-top: 8px;
+    width: 157px;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+
+}
+
+.name a {
+    color: #000;
+    text-decoration: none;
+    font-size: 16px;
+    padding-top: 4px;
+}
+
+.author span {
+    text-decoration: none;
+    font-size: 14px;
+    color: #9c9c9c;
+}
+
+.price {
+    padding-top: 20px;
+}
+
+.price span {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.btns {
+    display: flex;;
+}
+
+.button_fav {
+    margin-top: -26px;
+    margin-left: 70px;
+}
+.button_fav button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.image_button_fav:hover {
+    transform: scale(1.15);
+}
+
+.image_button_fav {
+    width: 28px;
+}
+
+.image_button_buy:hover {
+    transform: scale(1.15);
+}
+
+.image_button_buy {
+    width: 25px;
+    height: 28px;
+}
+
+.button_buy {
+    margin-top: -26px;
+    margin-left: 10px;
+    filter: contrast(0.6);
+}
+
+.info {
+    position: absolute;
+    bottom: 25px;
+    padding-left: 4px;
+}
+
+.source {
+    font-size: 14px;
+}

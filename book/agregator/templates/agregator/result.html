@@ -1,0 +1,70 @@
+{% extends "agregator/index.html" %}
+{% block content %}
+{% load static %}
+    <div class='catalog_books'>
+    {% if data %}
+        {% for book in data %}
+        <div class='card_book'>
+            <div class='image'>
+            <a href="{{book.link}}" target="blank"><img class='card_image' src='{{book.img}}'></a>
+            </div>
+            <div class="name">
+            <a href="{{book.link}}" target="blank">{{book.book}}</a>
+            </div>
+            <div class="author">
+            <span>{{book.author}}</span>
+            </div>
+            <div class='info'>
+            <div class="price">
+                <span>{{book.price}} ₽</span>
+            </div>
+            <div class='btns'>
+            <div class="button_fav">
+              {% if book.book|add:book.img in basket_list_name_book %}
+              <button id="{{book.id}}"><image id="i{{book.id}}" class="image_button_fav" src="{% static 'image/black_like.png' %}"></button>
+              {% else %}
+                <button id="{{book.id}}"><image id="i{{book.id}}" class="image_button_fav" src="{% static 'image/like.png' %}"></button>
+                {% endif %}
+                  {% block javascript %}
+                  <script>
+                  $("#{{book.id}}").on('click', function(event) {
+                      $.ajax({
+                          url: '{% url "agregator:get-book" %}',
+                          type: 'post',
+                          data: {'img':'{{book.img}}',
+                                'book': '{{book.book}}',
+                                'author': '{{book.author}}',
+                                'price': '{{book.price}}',
+                                'link': '{{book.link}}',
+                                'source': '{{book.source}}',
+                                'basket':"{{basket}}",
+                                'customer':"{{customer}}"},
+                          contentType: "application/x-www-form-urlencoded;charset=UTF-8",
+                          headers: { "X-CSRFToken": "{{ csrf_token }}" },
+                          dataType: 'json',
+                          success: function(data) {
+                              if (data.success == true) {
+                                document.getElementById('i{{book.id}}').src = '{% static "image/black_like.png" %}'
+                          } else {
+                            document.getElementById('i{{book.id}}').src = '{% static "image/like.png" %}'
+                          }
+                        }
+                      });
+                    });
+                  </script>
+                  {% endblock %}
+            </div>
+            <div class="button_buy">
+                <a href="{{book.link}}" target="blank"><image class='image_button_buy' src="{% static 'image/basket.png' %}"></a>
+            </div>
+            </div>
+            <div>
+            <span class='source'>{{book.source}}</span>
+            </div>
+            </div>
+        </div>    
+        {% endfor %}
+    {% else %}
+    {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'agregator/index.html' %}
+{% block content %}
+{% load static %}
+        <h1>Ajax view</h1>
+        <form method='post'>
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type='submit' value='Register'>
+        </form>
+        <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+        {% block javascript %}
+        <script>
+        $("#id_email").change(function() {
+            var email = $(this).val()
+
+            $.ajax({
+                url: '{% url "accounts:validate-email" %}',
+                data: {
+                    'email': email
+                },
+                dataType: 'json',
+                success: function(data) {
+                    if (data.is_taken) {
+                        alert('A user with this email already exists')
+                    }
+                }
+            });
+
+        });
+        </script>
+        {% endblock %}
+{% endblock %}

@@ -1,0 +1,31 @@
+version: "3.1"
+   
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=test_password123!
+  redis:
+    image: redis:alpine
+  web:
+    build: .
+    command: >
+      bash -c "python3 manage.py migrate &&
+             python3 manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./book:/code
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=test_password123!
+      - SECRET_KEY=django-insecure-yhi8qb_whx9l0_#5*3hw%cj&s&%&&7^+6zl!jta&a2bm1545k6
+    depends_on:
+      - db
+      - redis
+

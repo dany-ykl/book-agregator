@@ -1,0 +1,82 @@
+.cart {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 180px;
+    width: 600px;
+    left: 16%;
+    right: 10%;
+    row-gap: 25px;
+}
+
+.cart_book {
+    display: flex;
+}
+
+.cart_image {
+    width: 132px;
+    height: 180px;
+}
+
+.cart_name_book {
+    padding-left: 4%;
+    width: 400px;
+    padding-top: 5%;
+}
+
+.cart_name_book a {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.cart_author {
+    position: relative;
+    top: 84px;
+    left: -180px;
+    width: 320px;
+    height: 100px;
+}
+
+.cart_author span {
+    font-size: 17px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.cart_fav {
+    background: none;
+    border: none;
+    padding-right: 12px;
+    position: relative;
+    top: 30px;
+    cursor: pointer;
+}
+
+.cart_fav:hover {
+    transform: scale(1.15);
+}
+
+.img_cart_fav {
+    width: 28px;
+}
+.img_cart_buy {
+    width: 25px;
+}
+
+.button_buy {
+    position: relative;
+    top: 95px;
+    padding-right: 15px;
+}
+
+.cart_price {
+    position: relative;
+    left: -320px;
+    width: 160px;
+    top: 135px;
+}
