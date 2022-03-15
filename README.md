@@ -5,4 +5,11 @@
 - Redis (создание кэша для сокращения времени пользования)
 - Docker (для быстрого развертывания приложения)
 
-<h1>для запуска в Docker используйте docker-compose up</h1>
+<h2>Для запуска в Docker:</h2>
+
+1. Создайте docker-контейнер из папки book
+    docker build -t book-agregator
+    
+2. Запустите docker-compose:
+    docker-compose up
+
