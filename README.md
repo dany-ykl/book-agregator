@@ -6,10 +6,10 @@
 - Docker (для быстрого развертывания приложения)
 
 <h2>Для запуска в Docker:</h2>
-
+<br>
 1. Создайте docker-контейнер из папки book
     docker build -t book-agregator
-    
+<br>
 2. Запустите docker-compose:
     docker-compose up
 
