@@ -8,7 +8,7 @@
 <h2>Для запуска в Docker:</h2>
 <br>
 1. Создайте docker-контейнер из папки book:
-    <h3>docker build -t book-agregator</h3>
+    <h3>docker build -t book-agregator .</h3>
 <br>
 2. Запустите docker-compose:
     <h3>docker-compose up</h3>
